@@ -11,4 +11,4 @@ Options: -w is width, -h is height -n is the name of the customer. -n outputs ma
 
 Improvements to come. 
 
-For windows: Download and instal http://gitextensions.github.io/ then copy create.sh to directory you wish to run it in.  (there must be a similar location to /usr/bin/local on Windows but I am not aware of it yet) Open Powershell and run command. (NEED TO TEST)
+For windows: Download and install http://gitextensions.github.io/ then copy create.sh to directory you wish to run it in.  (there must be a similar location to /usr/bin/local on Windows but I am not aware of it yet) Open Powershell and run command. (NEED TO TEST)
