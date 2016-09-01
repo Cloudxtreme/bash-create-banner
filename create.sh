@@ -28,8 +28,8 @@ mkdir $css_width$connect$css_height/scripts;
 cat << _EOF_ >$css_width$connect$css_height/css/screen.css
 html,
 body {
-    width: 300px;
-    height: 250px;
+    width: $css_width$unit;
+    height: $css_height$unit;
     padding: 0;
     margin: 0;
     overflow: hidden;
@@ -55,7 +55,7 @@ body * {
 #banner {
     width: 100%;
     height: 100%;
-    background: #fff url($css_height$connect$css_width$unscr.jpg) top center no-repeat;
+    background: #fff url($css_width$connect$css_height$unscr.jpg) top center no-repeat;
     position: relative;
     cursor: pointer;
 }
