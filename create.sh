@@ -1,44 +1,79 @@
 #!bin/bash/
 
-mkdir banner;
-mkdir banner/assets;
-mkdir banner/css;
-mkdir banner/scripts;
+css_height=100
+css_width=100
+project=banner
+unit=px
+connect=x
+unscr=_bg
 
-#touch banner/css/screen.css;
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+		-h) css_height="$2"; shift 2;;
+		-w) css_width="$2"; shift 2;;
+		-n) project="$2"; shift 2;;
 
-cat << _EOF_ >banner/css/screen.css
+		-*) echo "uknown option: $1" >&2; exit 1;;
+		-*) handle_argument "$1"; shift 1;;
+	esac
+done
+
+mkdir $css_width$connect$css_height;
+mkdir $css_width$connect$css_height/assets;
+mkdir $css_width$connect$css_height/css;
+mkdir $css_width$connect$css_height/scripts;
+
+#touch project/css/screen.css;
+
+cat << _EOF_ >$css_width$connect$css_height/css/screen.css
+html,
 body {
-    background: #fff;
-    margin: 0;
+    width: 300px;
+    height: 250px;
     padding: 0;
+    margin: 0;
+    overflow: hidden;
+    /*margin: 50px auto 0 auto;*/
+    background: #efefef;
+}
+
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body,
+body * {
+    box-sizing: border-box;
 }
 
 #banner {
-    position: absolute;
-    width: 180px; /* your width*/
-    height: 500px; /* your height */
-    -webkit-box-sizing: border-box;
-    /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;
-    /* Firefox, other Gecko */
-    box-sizing: border-box;
-    /* Opera/IE 8+ */
-    background-image: url("../assets/bg.jpg");
-    border: none;
+    width: 100%;
+    height: 100%;
+    background: #fff url($css_height$connect$css_width$unscr.jpg) top center no-repeat;
+    position: relative;
     cursor: pointer;
 }
 
+
 /*-- banner styles here --*/
 
-@keyframes text1 {
+
+@keyframes example {
+
    /*-- animations here --*/
+
 }
 _EOF_
 
-#touch banner/scripts/scripts.js;
+#touch project/scripts/scripts.js;
 
-cat << _EOF_>banner/scripts/scripts.js
+cat << _EOF_>$css_width$connect$css_height/scripts/scripts.js
 
 var banner = document.getElementById('banner');
 
@@ -69,39 +104,43 @@ document.addEventListener('touchmove', function(event) {
   parent.window.scrollBy(0,deltay);  
 }, false);
 _EOF_
-#touch banner/index.html;
+#touch project/index.html;
 
-cat << _EOF_ >banner/index.html
+cat << _EOF_ >$css_width$connect$css_height/index.html
 <!doctype html>
 <html>
 
 <head>
-    <title>180x500</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$css_width$connect$css_height $project</title>
     <script>
     document.write('<script src="' + (window.API_URL || 'https://s1.adform.net/banners/scripts/rmb/Adform.DHTML.js?bv=' + Math.random()) + '"><\/script>');
     </script>
+    <link type="text/css" rel="stylesheet" href="css/screen.css" />
 </head>
 
 <body>
     <div id="banner"></div>
+    <script src="script.js"></script>
 </body>
 
 </html>
 
 _EOF_
 
-#touch banner/manifest.json;
+#touch project/manifest.json;
 
-cat << _EOF_>banner/manifest.json
+cat << _EOF_>$css_width$connect$css_height/manifest.json
 {
 
     "version": "1.0",
 
-    "title": "930x180 standard html", 
+    "title": "$css_width$connect$css_height", 
     "description": "",  
 
-    "width" : "930", 
-    "height": "180", 
+    "width" : "$css_width", 
+    "height": "$css_height", 
 
     "events": {
         "enabled": 1, 
@@ -109,9 +148,9 @@ cat << _EOF_>banner/manifest.json
     },
 
     "clicktags": {
-        "clickTAG": "http://www.adform.com"
+        "clickTAG": "http://www.$project.com"
     },
 
-    "source": "930x180.html"
+    "source": "index.html"
 }
 _EOF_
