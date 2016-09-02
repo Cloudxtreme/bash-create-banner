@@ -122,7 +122,7 @@ cat << _EOF_ >$css_width$connect$css_height/index.html
 
 <body>
     <div id="banner"></div>
-    <script src="script.js"></script>
+    <script src="scripts/scripts.js"></script>
 </body>
 
 </html>
