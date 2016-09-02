@@ -19,6 +19,6 @@ To run the script, you must use Git Bash.
 
 #zipper
 
-Zipper zips each directory into its own archive. No options, just zipping. Copy zipper.sh into your bin folder, run as `bash zipper.sh` and watch output. 
+Zipper zips each directory into its own archive. No options, just zipping. Copy zipper.sh into your bin folder, run as `bash zipper.sh` and watch output. Zipper updates each zip archive with latest files if the zip archive already exsits. 
 
 **For Windows:** Download unzip.exe and zip.exe from [Stahlworks dev tools](http://stahlworks.com/dev/?tool=zipunzip) and place them into your bin directory before running the script. 
