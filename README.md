@@ -19,4 +19,4 @@ To run the script, you must use Git Bash.
 
 #zipper
 
-Zipper zips each directory into its own archive. No options, just zipping. Copy zipper.sh into your bi folder, run as `bash zipper.sh` and watch output. 
+Zipper zips each directory into its own archive. No options, just zipping. Copy zipper.sh into your bin folder, run as `bash zipper.sh` and watch output. 
